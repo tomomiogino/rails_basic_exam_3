@@ -6,6 +6,7 @@ class PropertiesController < ApplicationController
 
   def new
     @property = Property.new
+    2.times { @property.stations.build }
   end
 
   def create
@@ -18,9 +19,11 @@ class PropertiesController < ApplicationController
   end
 
   def show
+    @stations = @property.stations
   end
 
   def edit
+    @property.stations.build
   end
 
   def update
@@ -33,12 +36,12 @@ class PropertiesController < ApplicationController
 
   def destroy
     @property.destroy
-    redirect_to propertys_path, notice: '物件情報を削除しました！'
+    redirect_to properties_path, notice: '物件情報を削除しました！'
   end
 
   private
   def property_params
-    params.require(:property).permit(:name, :rent, :address, :age, :note)
+    params.require(:property).permit(:name, :rent, :address, :age, :note, stations_attributes: %i(route name minutes_foot property_id id _destroy))
   end
 
   def set_property

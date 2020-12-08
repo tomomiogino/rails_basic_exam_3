@@ -4,5 +4,5 @@ class Station < ApplicationRecord
     validates :name, length: { maximum: 80 }
     validates :minutes_foot, length: { maximum: 4 }, numericality: { greater_than_or_equal_to: 0 }
   end
-  belongs_to :property
+  belongs_to :property, optional: true
 end
