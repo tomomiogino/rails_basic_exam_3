@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  route: MyString
+  name: MyString
+  minutes_foot: 1
+  property: one
+
+two:
+  route: MyString
+  name: MyString
+  minutes_foot: 1
+  property: two
