@@ -1,4 +1,5 @@
 class PropertiesController < ApplicationController
+  include PropertiesConcern
   before_action :set_property, only: %i(show edit update destroy)
   def index
     @properties = Property.all
@@ -37,14 +38,5 @@ class PropertiesController < ApplicationController
   def destroy
     @property.destroy
     redirect_to properties_path, notice: '物件情報を削除しました！'
-  end
-
-  private
-  def property_params
-    params.require(:property).permit(:name, :rent, :address, :age, :note, stations_attributes: %i(route name minutes_foot property_id id _destroy))
-  end
-
-  def set_property
-    @property = Property.find(params[:id])
   end
 end
